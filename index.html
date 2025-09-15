@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exoplanet Detection AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .container {
+            max-width: 1024px;
+            margin: auto;
+            padding: 2rem;
+        }
+        .section {
+            display: none;
+        }
+        .section.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <div class="container mx-auto px-4 py-8">
+
+        <!-- Header and Navigation -->
+        <header class="flex flex-col sm:flex-row justify-between items-center mb-10 pb-4 border-b border-gray-200">
+            <h1 class="text-3xl font-bold text-gray-900 mb-4 sm:mb-0">Exoplanet Detection AI</h1>
+            <nav>
+                <ul class="flex space-x-4 sm:space-x-6 text-sm sm:text-base font-medium">
+                    <li><a href="#" onclick="showSection('dashboard')" class="text-gray-600 hover:text-indigo-600 transition-colors duration-200">Dashboard</a></li>
+                    <li><a href="#" onclick="showSection('data-viz')" class="text-gray-600 hover:text-indigo-600 transition-colors duration-200">Data Visualization</a></li>
+                    <li><a href="#" onclick="showSection('results')" class="text-gray-600 hover:text-indigo-600 transition-colors duration-200">Results</a></li>
+                    <li><a href="#" onclick="showSection('community')" class="text-gray-600 hover:text-indigo-600 transition-colors duration-200">Community</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="section active bg-white p-6 sm:p-8 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold mb-4 text-gray-900">Dashboard</h2>
+            <p class="text-gray-600 mb-6">Select a dataset or upload your own to begin the exoplanet detection process.</p>
+            <div class="space-y-6">
+                <!-- Dataset Selection -->
+                <div>
+                    <label for="dataset" class="block text-gray-700 font-medium mb-2">Select Dataset</label>
+                    <select id="dataset" class="block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        <option>Kepler Mission Data</option>
+                        <option>TESS Mission Data</option>
+                        <option>Other Public Datasets</option>
+                    </select>
+                </div>
+                <!-- Upload Option -->
+                <div class="border-2 border-dashed border-gray-300 rounded-md p-6 sm:p-8 text-center">
+                    <input type="file" class="hidden" id="file-upload">
+                    <label for="file-upload" class="cursor-pointer text-indigo-600 hover:text-indigo-800 transition-colors duration-200 font-medium">
+                        Click to upload your own dataset
+                    </label>
+                    <p class="text-sm text-gray-500 mt-2">.csv or .json files accepted, up to 10MB</p>
+                </div>
+                <!-- Run Detection Button -->
+                <div class="flex justify-center pt-4">
+                    <button class="bg-indigo-600 text-white font-bold py-3 px-8 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-4 focus:ring-indigo-500/50 transition-colors duration-200">
+                        Run Detection
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Data Visualization Section -->
+        <section id="data-viz" class="section bg-white p-6 sm:p-8 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold mb-4 text-gray-900">Data Visualization</h2>
+            <p class="text-gray-600 mb-6">Explore the light curve data and apply preprocessing filters.</p>
+            <div class="space-y-6">
+                <!-- Light Curve Plot Placeholder -->
+                <div class="bg-gray-100 border border-gray-200 rounded-md h-64 flex items-center justify-center">
+                    <p class="text-gray-400 text-lg">Light Curve Plot Placeholder</p>
+                </div>
+                <!-- Preprocessing Options -->
+                <div>
+                    <h3 class="font-medium text-gray-700 mb-2">Preprocessing Options</h3>
+                    <div class="flex flex-wrap gap-4">
+                        <label class="flex items-center">
+                            <input type="checkbox" class="rounded text-indigo-600 focus:ring-indigo-500 mr-2">
+                            <span>Normalize Data</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="rounded text-indigo-600 focus:ring-indigo-500 mr-2">
+                            <span>Apply Smoothing Filter</span>
+                        </label>
+                        <label class="flex items-center">
+                            <input type="checkbox" class="rounded text-indigo-600 focus:ring-indigo-500 mr-2">
+                            <span>Baseline Correction</span>
+                        </label>
+                    </div>
+                </div>
+                <!-- Apply Filter Button -->
+                <div class="flex justify-end pt-4">
+                    <button class="bg-gray-200 text-gray-800 font-bold py-3 px-6 rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400 transition-colors duration-200">
+                        Apply Filters
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Prediction Results Section -->
+        <section id="results" class="section bg-white p-6 sm:p-8 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold mb-4 text-gray-900">Prediction Results</h2>
+            <p class="text-gray-600 mb-6">The AI has analyzed the light curve. Here are the results.</p>
+            <div class="space-y-6">
+                <!-- Detection Result -->
+                <div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Detection Result: <span class="text-indigo-600">Possible Exoplanet Detected</span></h3>
+                    <p class="text-lg text-gray-700">Confidence Score: <span class="font-semibold">94.5%</span></p>
+                </div>
+                <!-- Metrics Table -->
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white rounded-md border border-gray-200">
+                        <thead>
+                            <tr class="bg-gray-100">
+                                <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Metric</th>
+                                <th class="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">Value</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap">Accuracy</td>
+                                <td class="px-6 py-4 whitespace-nowrap">96%</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap">Precision</td>
+                                <td class="px-6 py-4 whitespace-nowrap">91%</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap">Recall</td>
+                                <td class="px-6 py-4 whitespace-nowrap">98%</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap">F1 Score</td>
+                                <td class="px-6 py-4 whitespace-nowrap">94.4%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Export Options -->
+                <div class="flex flex-wrap gap-4 pt-4">
+                    <button class="bg-gray-200 text-gray-800 font-bold py-2 px-4 rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400 transition-colors duration-200">
+                        Export as CSV
+                    </button>
+                    <button class="bg-gray-200 text-gray-800 font-bold py-2 px-4 rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-400 transition-colors duration-200">
+                        Export as JSON
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Community Page Section -->
+        <section id="community" class="section bg-white p-6 sm:p-8 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold mb-4 text-gray-900">Community</h2>
+            <p class="text-gray-600 mb-6">Learn more about the project, contribute, and find resources.</p>
+            <div class="space-y-6">
+                <!-- GitHub -->
+                <div>
+                    <h3 class="font-medium text-gray-700 mb-2">GitHub Repository</h3>
+                    <a href="#" class="text-indigo-600 hover:text-indigo-800 transition-colors duration-200 font-medium underline">comming_soon</a>
+                </div>
+                <!-- Contributors -->
+                <div>
+                    <h3 class="font-medium text-gray-700 mb-2">Contributors</h3>
+                    <ul class="list-disc list-inside space-y-1 text-gray-600">
+                        <li>Khusi</li>
+                        <li>Mansi</li>
+                        <li>Riya</li>
+                    </ul>
+                </div>
+                <!-- NASA References -->
+                <div>
+                    <h3 class="font-medium text-gray-700 mb-2">NASA Dataset References</h3>
+                    <ul class="list-disc list-inside space-y-1 text-gray-600">
+                        <li><a href="#" class="text-indigo-600 hover:text-indigo-800 transition-colors duration-200 underline">Kepler Public Data Archive</a></li>
+                        <li><a href="#" class="text-indigo-600 hover:text-indigo-800 transition-colors duration-200 underline">TESS Public Data Archive</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="mt-10 pt-4 text-center text-gray-500 text-sm border-t border-gray-200">
+            &copy; 2025 nasa_menions. All rights reserved.
+        </footer>
+
+    </div>
+
+    <!-- Simple JavaScript for Navigation -->
+    <script>
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+        }
+    </script>
+</body>
+</html>
