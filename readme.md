@@ -59,3 +59,35 @@ venv\Scripts\activate      # Windows
 
 # Install dependencies
 pip install -r requirements.txt
+```
+## References & Resources  
+
+### Exoplanet Data Sources  
+- [NASA Exoplanet Archive](https://exoplanetarchive.ipac.caltech.edu/)  
+- [Kepler/K2 Mission Data](https://archive.stsci.edu/kepler/)  
+- [TESS Mission Data](https://archive.stsci.edu/tess/)  
+- [ExoFOP (Exoplanet Follow-up Observing Program)](https://exofop.ipac.caltech.edu/)  
+
+### Machine Learning & Astronomy  
+- [NASA Frontier Development Lab](https://frontierdevelopmentlab.org/)  
+- [Google AI Exoplanet ML](https://ai.googleblog.com/2018/12/machine-learning-helps-discover-new.html)  
+- [Lightkurve (Python package)](https://docs.lightkurve.org/)  
+- [Astropy](https://www.astropy.org/)  
+
+### deployment & Infrastructure  
+- [Google Cloud AI/ML Platform](https://cloud.google.com/ai-platform)  
+- [AWS SageMaker](https://aws.amazon.com/sagemaker/)  
+- [Microsoft Azure ML](https://azure.microsoft.com/en-us/services/machine-learning/)  
+
+### Visualization Tools  
+- [Plotly Dash](https://plotly.com/dash/)  
+- [Bokeh](https://bokeh.org/)  
+- [Grafana](https://grafana.com/)  
+
+### Research Papers  
+- Shallue & Vanderburg (2018): *Identifying Exoplanets with Deep Learning*  
+  [https://www.pnas.org/doi/10.1073/pnas.1717066115](https://www.pnas.org/doi/10.1073/pnas.1717066115)  
+- Armstrong et al. (2021): *Exoplanet detection with deep learning from TESS*  
+  [https://arxiv.org/abs/2101.11356](https://arxiv.org/abs/2101.11356)  
+- Osborn et al. (2020): *AI for Exoplanet Transit Detection*  
+  [https://arxiv.org/abs/2001.03460](https://arxiv.org/abs/2001.03460)  
